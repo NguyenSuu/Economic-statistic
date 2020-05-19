@@ -1,0 +1,56 @@
+<form class="example-form">
+    <h1 mat-dialog-title>Số liệu sản xuất theo tháng</h1>
+    <div mat-dialog-content>
+        <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+           
+            <div fxFlex="40" fxFlex.xs="40">
+                <mat-form-field>
+                    <mat-label>Năm</mat-label>
+                    <input matInput [(ngModel)]="year" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            </div>
+            <div fxFlex="10" fxFlex.xs="10"></div>
+            <div fxFlex="40" fxFlex.xs="40">
+                <mat-form-field>
+                    <mat-label>Tháng</mat-label>
+                    <mat-select  [(ngModel)]="month_value" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let m of month" [value]="m">
+                            {{m}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-content>
+        <div [formGroup]="form">
+            <div formArrayName="mProduction" *ngFor="let control of mProductionControl.controls;index as i">
+                <form class="example-form" [formGroupName]="i">
+                    <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                        <div fxFlex="50" fxFlex.xs="50">
+                            <mat-form-field>
+                                <mat-label> Tên sản phẩm</mat-label>
+                                <mat-select formControlName="p_id">
+                                    <mat-option *ngFor="let p of mPSV.products$ | async" [value]="p.id">
+                                        {{p.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="50" fxFlex.xs="50">
+                            <mat-form-field>
+                                <mat-label>Số liệu</mat-label>
+                                <input matInput formControlName="data">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button (click)="addMore()">Thêm nhiều</button>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Hủy</button>
+        <button mat-button (click)="submit()">Thêm</button>
+    </div>
+</form>

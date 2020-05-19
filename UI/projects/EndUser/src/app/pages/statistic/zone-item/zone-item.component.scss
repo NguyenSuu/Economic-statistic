@@ -1,0 +1,39 @@
+:host {
+    border-radius: .2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: .3s all;
+    border: 1px solid transparent;
+
+    &:hover {
+        border-color: #f2f2f2;
+    }
+}
+
+.image__wrapper {
+    $imgSize: 60px;
+    width: $imgSize;
+    height: $imgSize;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.details {
+    margin-left: 1rem;
+    flex-grow: 1;
+
+    span {
+        font-size: .9rem;
+        opacity: .6;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+}

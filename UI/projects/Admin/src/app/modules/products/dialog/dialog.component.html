@@ -1,0 +1,69 @@
+<form class="example-form" [formGroup]="form">
+    <h1 mat-dialog-title>Sản phẩm</h1>
+    <div mat-dialog-content>
+        <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="10" fxFlex.xs="10"></div>
+            <div fxFlex="40" fxFlex.xs="40">
+                <mat-form-field>
+                    <mat-label>Tên ngành</mat-label>
+                    <mat-select [(ngModel)]="fieldSelectedId" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let f of productSv.fields$ | async" [value]="f.id">
+                            {{f.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxFlex="10" fxFlex.xs="10"></div>
+            <div fxFlex="40" fxFlex.xs="40">
+                <mat-form-field>
+                    <mat-label>Tên dòng sản phẩm</mat-label>
+                    <mat-select [(ngModel)]="plId" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let pL of nganhHienThi$ | async" [value]="pL.id">
+                            {{pL.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-content>
+        <div [formGroup]="form">
+            <div formArrayName="products" *ngFor="let control of productsControl.controls; index as i">
+                <form class="example-form" [formGroupName]="i">
+                    <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+                        <div fxFlex="30" fxFlex.xs="30">
+                            <mat-form-field>
+                                <mat-label>Tên sản phẩm</mat-label>
+                                <input matInput formControlName="name" placeholder="Coffee">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="5" fxFlex.xs="5"></div>
+                        <div fxFlex="30" fxFlex.xs="30">
+                            <mat-form-field>
+                                <mat-label>Mã sản phẩm</mat-label>
+                                <input matInput formControlName="code" placeholder="02">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="5" fxFlex.xs="5"></div>
+                        <div fxFlex="20" fxFlex.xs="20">
+                            <mat-form-field>
+                                <mat-label>Đơn vị tính</mat-label>
+                                <mat-select formControlName="u_id">
+                                    <mat-option *ngFor="let u of productSv.units$ | async" [value]="u.id">
+                                        {{u.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <button (click)="addMore()">Thêm nhiều</button>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Hủy</button>
+        <button mat-button (click)="submit()">Xác nhận</button>
+    </div>
+
+</form>

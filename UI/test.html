@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //     fetch('products', {
+    //         headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJleHAiOjE1ODk1MzI2MTEsImlhdCI6MTU4OTUxNDYxMX0.ldxtNIBxKvixMVeQs95RnydLiLW29hvE9GnV2WA492fVnCDvC2VYVX-3KRMVKbqNnNfPhzzf-a49snztPUFUfQ'
+    // },
+    //     }).then(e => console.log(e)).catch(err => console.log(err))
+
+        var myHeaders = new Headers();
+        const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXVuZ3V5ZW4yNTEyIiwiZXhwIjoxNTg5NzkwODMxLCJpYXQiOjE1ODk3NzI4MzF9.qFCjqjqghHMjOR38LJgj_meRTcVO33HrvZHbwkVQ0sUimowdlAwAGBgrvQDaSsBLEcAx4w0U1Rvkke9lfFDcsQ"
+myHeaders.append("Authorization", `Bearer ${token}`);
+myHeaders.append("Host","");
+myHeaders.append("Content-Type","application/json");
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  redirect: 'follow',
+  body: JSON.stringify({
+    username: 'suunguyen2512',
+    password: 'password'
+  })
+};
+
+fetch("authenticate", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+    </script>
+</body>
+</html>

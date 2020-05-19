@@ -1,0 +1,81 @@
+@import '../../../assets/scss/colors';
+
+.btn-block {
+    display: block !important;
+}
+
+h1 {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+}
+
+.meta-menu {
+    padding: 1rem;
+    margin-left: 0;
+    margin-top: 0.2em;
+    width: calc(calc(100%) - calc(4rem));
+    position: absolute;
+    width: 100%;
+    height: 60vh;
+    border-radius: .1rem;
+    background-color: white;
+    box-shadow: 1px 2px 8px rgba(0,0,0,.3);
+    overflow: auto;
+}
+
+.list-group-item {
+    padding:0 ;
+    a {
+        padding: 0.75rem 1.25rem;
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        transition: .2s all;
+
+        &:link {
+            color: $dark;
+        }
+        &:hover {
+            color: $secondary;
+        }
+
+        &:active {
+            background-color: $secondary;
+            color: white !important;
+        }
+
+        &.active {
+            color: $primary;
+        }
+    }
+}
+
+.dropdown-menu {
+    border-radius: 0;
+    border: none;
+    box-shadow: 1px 2px 8px rgba(0,0,0,.3);
+
+    a.dropdown-item {
+        border-bottom: 1px solid $light;
+        transition: .2s all;
+
+        &:hover {
+            color: $secondary;
+        }
+
+        &:active {
+            background-color: $secondary;
+            color: white;
+        }
+
+        &.active {
+            color: $accent;
+            background-color: white;
+        }
+
+        &.quarter {
+            background-color: $vice;
+        }
+    }
+}

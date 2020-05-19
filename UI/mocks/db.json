@@ -1,0 +1,171 @@
+{
+  "districts": [
+    {
+      "id": 1,
+      "name": "Thành phố Huế",
+      "code": "01"
+    },
+    {
+      "id": 2,
+      "name": "Huyện Phong Điền",
+      "code": "02"
+    },
+    {
+      "id": 3,
+      "name": "Huyện Quảng Điền",
+      "code": "03"
+    },
+    {
+      "id": 4,
+      "name": "Thị xã Hương Trà",
+      "code": "04"
+    },
+    {
+      "id": 5,
+      "name": "Huyện Phú Vang",
+      "code": "05"
+    },
+    {
+      "id": 6,
+      "name": "Thị xã Hương Thủy",
+      "code": "06"
+    },
+    {
+      "id": 7,
+      "name": "Huyện Phú Lộc",
+      "code": "07"
+    },
+    {
+      "id": 8,
+      "name": "Huyện Nam Đông 1",
+      "code": "08"
+    },
+    {
+      "id": 9,
+      "name": "Huyện A Lưới",
+      "code": "09"
+    }
+  ],
+  "fields": [
+    {
+      "id": 1,
+      "name": "Nông nghiệp",
+      "code": "N01"
+    },
+    {
+      "id": 2,
+      "name": "Công nghiệp",
+      "code": "C02"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "productName": "Gạo",
+      "productCode": "01",
+      "code": "01",
+      "code": "10"
+    },
+    {
+      "id": 2,
+      "productName": "Coffee",
+      "productCode": "02",
+      "code": "02",
+      "code": "123123"
+    },
+    {
+      "id": 4,
+      "productName": "Ngô",
+      "productCode": "04",
+      "code": "01",
+      "code": "123123"
+    },
+    {
+      "productName": "Lạc",
+      "productCode": "05",
+      "code": "01",
+      "code": "123123",
+      "id": 5
+    }
+  ],
+  "product-line": [
+    {
+      "name": "Demoaaa",
+      "code": "123123",
+      "code": "N01",
+      "id": 2,
+      "field": {
+        "id": 1,
+        "name": "Nông nghiệp",
+        "code": "N01"
+      }
+    },
+    {
+      "name": "Demo",
+      "code": "123123",
+      "code": "N01",
+      "id": 3,
+      "field": {
+        "id": 2,
+        "name": "Nông nghiệp",
+        "code": "N01"
+      }
+    },
+    {
+      "name": "Demo",
+      "code": "10",
+      "code": "N01",
+      "id": 4
+    }
+  ],
+  "units": [
+    {
+      "code": "01",
+      "name": "Tấn",
+      "sign": "t",
+      "id": 1
+    },
+    {
+      "code": "02",
+      "name": "Lít",
+      "sign": "l",
+      "id": 2
+    },
+    {
+      "code": "Demo",
+      "name": "10",
+      "sign": "aaaaaaaa",
+      "id": 3
+    }
+  ],
+  "typeData": [
+    {
+      "id": 1,
+      "typeDataCode": "01",
+      "typeDataName": "3333"
+    },
+    {
+      "typeDataCode": "Demo",
+      "typeDataName": "11",
+      "id": 2
+    }
+  ],
+  "monthlyProduction": [
+    {
+      "month": "2",
+      "years": "2019",
+      "productCode": "02",
+      "typeDataCode": "01",
+      "data": "3000",
+      "id": 2
+    },
+    {
+      "month": "3",
+      "years": "2019",
+      "productCode": "01",
+      "typeDataCode": "01",
+      "data": "1000",
+      "id": 3
+    }
+  ]
+}

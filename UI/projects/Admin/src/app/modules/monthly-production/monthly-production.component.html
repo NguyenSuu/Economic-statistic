@@ -1,0 +1,101 @@
+        <button id="addNew" mat-raised-button (click)="openDialog()">Thêm mới</button>
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Số liệu sản xuất theo tháng</h4>
+            </div>
+            <div class="card-body">
+                <table mat-table [dataSource]="monthlyProduction" class="mat-elevation-z8" matSort>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element; index as i"> {{i + 1}} </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="month">
+                        <th mat-header-cell *matHeaderCellDef> Tháng </th>
+                        <td mat-cell *matCellDef="let element;index as index">
+                            <ng-container *ngIf="index==editIndex;else editInput">
+                                <input type="text" [(ngModel)]="currentMonthlyProduction.month" />
+                            </ng-container>
+                            <ng-template #editInput>
+                                {{element.month}}
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="years">
+                        <th mat-header-cell *matHeaderCellDef>Năm </th>
+                        <td mat-cell *matCellDef="let element; index as index">
+                            <ng-container *ngIf="index == editIndex; else editInput">
+                                <input type="text" [(ngModel)]="currentMonthlyProduction.year" />
+                            </ng-container>
+                            <ng-template #editInput>
+                                {{element.year}}
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="product_id">
+                        <th mat-header-cell *matHeaderCellDef> Tên sản phẩm</th>
+                        <td mat-cell *matCellDef="let element; index as index">
+                            <ng-container *ngIf="index == editIndex; else editInput">
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="element.p_id">
+                                        <mat-option *ngFor="let p of mPSV.products$ | async" [value]="p.id">
+                                            {{p.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </ng-container>
+                            <ng-template #editInput>
+                                {{element?.products?.name}}
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="productLine_id">
+                        <th mat-header-cell *matHeaderCellDef> Tên loại sản phẩm</th>
+                        <td mat-cell *matCellDef="let element; index as index">
+                            <ng-container *ngIf="index == editIndex; else editInput">
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="element.pL_id">
+                                        <mat-option *ngFor="let pL of mPSV.productLine$ | async" [value]="pL.id">
+                                            {{ pL.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </ng-container>
+                            <ng-template #editInput>
+                                {{element?.products?.productLine?.name}}
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="data">
+                        <th mat-header-cell *matHeaderCellDef> Số liệu </th>
+                        <td mat-cell *matCellDef="let element; index as index">
+                            <ng-container *ngIf="index == editIndex; else editInput">
+                                <input type="text" [(ngModel)]="currentMonthlyProduction.data" />
+                            </ng-container>
+                            <ng-template #editInput>
+                                {{element.data}}
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef> Thao tác </th>
+                        <td mat-cell *matCellDef="let element; index as index">
+                            <ng-container *ngIf="index == editIndex; else acceptButton">
+                                <button mat-raised-button (click)="updateData()">Xác nhận</button>
+                                <button mat-raised-button (click)="cancelEdit()">Hủy</button>
+                            </ng-container>
+                            <ng-template #acceptButton>
+                                <ng-container *ngIf="editIndex == null">
+                                    <button mat-raised-button (click)="toggleEdit(index, element)">Sửa</button>
+                                    <button mat-raised-button (click)="deleteData(element.id)">Xóa</button>
+                                </ng-container>
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>

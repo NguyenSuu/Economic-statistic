@@ -1,0 +1,15 @@
+
+<mat-toolbar>
+  <mat-toolbar-row>
+  <span></span>
+  <span class="example-spacer"></span>
+  <button [matMenuTriggerFor]="appMenu" mat-icon-button color="primary" aria-label="person">
+    <mat-icon>person</mat-icon>
+  </button>
+</mat-toolbar-row>
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent >
+        <a mat-menu-item (click)="signOut()">Log off</a>
+      </ng-template>
+    </mat-menu>
+</mat-toolbar>

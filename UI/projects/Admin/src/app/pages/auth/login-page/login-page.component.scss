@@ -1,0 +1,68 @@
+:host{
+    background: url('../../../../assets/images/bg-intro-desktop.png');
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 6rem 12rem;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: purple;
+
+    & > div {
+        width: 45%;
+    }
+}
+
+.login-text {
+    h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    span.subtitle {
+        font-weight: bold;
+        color: white;
+    }
+}
+
+.form-container {
+    padding: 2rem;
+    background-color: white;
+    border-radius: .5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: .5rem;
+        border: 2px solid silver;
+        color: black;
+        font-size: 1.1rem;
+        outline: none;
+    }
+
+    button {
+        background: purple;
+        color: white;
+        font-size: 1.6rem;
+        padding: 0.6rem;
+        border: 1px solid purple;
+        border-radius: .5rem;
+        outline: none;
+
+
+    }
+
+}
+
+button:hover {
+    transform: translateY(2px);
+}
+

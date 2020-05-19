@@ -1,0 +1,103 @@
+<ng-container *ngIf="statisticService.statisticState$ | async as statisticState; else loading">
+    <div class="col-3 d-flex flex-column">
+        <div class="mb-3 d-flex justify-content-between">
+            <div class="btn-group w-100 mr-1" dropdown>
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-animated">
+                    Năm {{ statisticState.year }} <span class="caret"></span>
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
+                    aria-labelledby="button-animated">
+                    <ng-container *ngFor="let y of statisticService.config.yearList">
+                        <li role="menuitem" *ngIf="y != statisticState.year" (click)="statisticService.setYear(y)">
+                            <a class="dropdown-item" href="javascript:void(0)">Năm {{ y }}</a>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+
+            <div class="btn-group w-100 ml-1" dropdown>
+                <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-animated">
+                    {{ statisticState.mileStone.name }} <span class="caret"></span>
+                </button>
+                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu"
+                    aria-labelledby="button-animated">
+
+                    <li role="menuitem" *ngFor="let mS of statisticService.config.timeList">
+                        <a class="dropdown-item" [class.quarter]="mS.code.includes('Q')"
+                            [class.active]="mS.code == statisticState.mileStone.code" href="javascript:void(0)"
+                            (click)="statisticService.setMileStone(mS)">{{ mS.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let iDT of statisticService.industryList$ | async">
+                <a href="javascript:void(0)" (click)="statisticService.setIndustry(iDT)"
+                    [class.active]="iDT.id == statisticState.industry.id">{{ iDT.name }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-9">
+        <div class="action__bar d-flex justify-content-between">
+
+            <!-- Button Toggle Meta Menu -->
+            <button #toggleButton class="btn btn-primary dropdown-toggle">{{ statisticState.zone.name }}</button>
+
+            <div class="btn-group" role="group" aria-label="Basic example" (click)="statisticService.toggleShowType()">
+                <button type="button" class="btn" [class.btn-primary]="statisticState.showType == 'TABLE'">Bảng</button>
+                <button type="button" class="btn" [class.btn-primary]="statisticState.showType == 'CHART'">Biểu
+                    đồ</button>
+            </div>
+        </div>
+
+        <!-- Meta Menu -->
+        <div #metaMenu class="meta-menu px-4" *ngIf="isOpenMetaMenu">
+            <div class="mb-4">
+                <h6>Tỉnh</h6>
+                <div class="row">
+                    <div class="col-4 p-2">
+                        <app-zone-item></app-zone-item>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <!-- District -->
+                <h6>Quận/Huyện</h6>
+                <div class="row">
+                    <div class="col-4 p-2" *ngFor="let z of [].constructor(10)">
+                        <app-zone-item></app-zone-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Số liệu sản xuất công nghiệp tỉnh Thừa Thiên Huế quý 1 năm 2018</h1>
+
+        <section *ngIf="statisticState.showType == 'TABLE'; else chart">
+            <app-statistic-table></app-statistic-table>
+        </section>
+
+        <ng-template #chart>
+            <!-- <section>
+                <app-pie-charts></app-pie-charts>
+            </section> -->
+
+            <section>
+                <app-vertical-bar-charts></app-vertical-bar-charts>
+            </section>
+
+            <section>
+                <!-- <app-grid-chart></app-grid-chart> -->
+            </section>
+        </ng-template>
+    </div>
+</ng-container>
+
+
+<ng-template #loading>
+    <app-loading-frame></app-loading-frame>
+</ng-template>

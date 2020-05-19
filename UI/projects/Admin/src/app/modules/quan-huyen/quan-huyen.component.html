@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-12">
+        <button id="addNew" mat-raised-button (click)="openDialog()">Thêm mới</button>
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Huyện</h4>
+            </div>
+            <div class="card-body">
+                <table mat-table [dataSource]="showDistrict" class="mat-elevation-z8">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element;index as i"> {{i+1}} </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef> Mã huyện </th>
+                        <td mat-cell *matCellDef="let element;index as index">
+                            <ng-container *ngIf="index==editCurrentIndex;else editInput">
+                                <input type="text" [(ngModel)]="currentDistrict.code" />
+                            </ng-container>
+                            <ng-template #editInput>
+                                {{element.code}}
+                            </ng-template>
+                        </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Tên huyện </th>
+                        <td mat-cell *matCellDef="let element; index as index">
+                            <ng-container *ngIf="index == editCurrentIndex; else editInput">
+                                <input type="text" [(ngModel)]="currentDistrict.name" />
+                            </ng-container>
+                            <ng-template #editInput>
+                                {{element.name}}
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef> Thao tác </th>
+                        <td mat-cell *matCellDef="let element; index as index">
+                            <ng-container *ngIf="index == editCurrentIndex; else acceptButton">
+                                <button mat-raised-button (click)="updateDistrict()">Xác nhận</button>
+                                <button mat-raised-button (click)="cancelEdit()">Hủy</button>
+                            </ng-container>
+                            <ng-template #acceptButton>
+                                <ng-container *ngIf="editCurrentIndex == null">
+                                    <button mat-raised-button (click)="toggleEdit(index, element)">Sửa</button>
+                                    <button mat-raised-button (click)="deleteDistrict(element.id)">Xóa</button>
+                                </ng-container>
+                            </ng-template>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [length]="district.length"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="onChangePage($event)">
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

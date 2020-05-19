@@ -1,0 +1,22 @@
+:host {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+app-sidebar {
+    width: 300px;
+    background-color: rgba(252, 252, 252, 0.548);
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.router-container {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+main {
+    flex-grow: 1;
+}

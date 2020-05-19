@@ -1,0 +1,25 @@
+<form class="example-form" [formGroup]="form">
+    <h1 mat-dialog-title>Sản phẩm</h1>
+    <div mat-dialog-content>
+        <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+            <div fxFlex="45" fxFlex.xs="45">
+
+                <mat-form-field>
+                    <mat-label> Mã số liệu</mat-label>
+                    <input matInput formControlName="code" placeholder="DL01">
+                </mat-form-field>
+            </div>
+            <div fxFlex="5" fxFlex.xs="5" ></div>
+            <div fxFlex="50" fxFlex.xs="50">
+                <mat-form-field>
+                    <mat-label> Tên số liệu</mat-label>
+                    <input matInput formControlName="name" placeholder="Thực tế">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Hủy</button>
+        <button mat-button (click)="submit()">Xác nhận</button>
+    </div>
+</form>

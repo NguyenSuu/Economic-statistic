@@ -1,0 +1,47 @@
+ul {
+    padding-inline-start: 0;
+    li {
+        list-style-type: none;
+        margin: .5rem 1rem;
+        height: 50px;
+        padding: 0;
+
+        button {
+            height: 100%;
+            width: 100%;
+            display: block;
+            background-color: white;
+            border-radius: .5rem;
+            text-align: center;
+            padding-top: .5rem;
+        }
+        
+    }
+}
+.active{
+    background: linear-gradient(60deg,#000000,#8e24aa) !important;
+    color: rgb(252, 244, 244);
+}
+.logo{
+    
+    display: block;
+    padding: 15px 0;
+    z-index: 4;
+    position: relative;
+}
+.logo:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    height: 1px;
+    width: calc(100% - 30px);
+    background-color: hsla(0,0%,71%,.3);
+}
+.simple-text{
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+}

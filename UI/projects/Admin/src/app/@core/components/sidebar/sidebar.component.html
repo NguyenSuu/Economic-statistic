@@ -1,0 +1,9 @@
+<div class="logo">
+    <div class="simple-text">{{ userName$ | async }}
+        <i class="fas fa-ad"></i>
+    </div>
+</div>
+<ul><li *ngFor="let router of routerList">
+    <button [routerLink]="[router.path]" routerLinkActive="active">{{ router.title }}</button>
+</li>
+</ul>
